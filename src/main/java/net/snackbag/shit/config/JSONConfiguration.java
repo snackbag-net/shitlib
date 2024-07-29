@@ -50,7 +50,7 @@ public class JSONConfiguration implements Configuration {
                 writer.close();
             }
 
-            BufferedReader reader = new BufferedReader(new FileReader(getAbsolutePath() + getFileName()));
+            BufferedReader reader = new BufferedReader(new FileReader(getAbsolutePath()));
             json = gson.fromJson(reader, JsonObject.class);
         } catch (IOException e) {
             e.printStackTrace();
