@@ -76,7 +76,7 @@ public class Webhook {
         }
 
         // Avatar URL
-        if (webhook.url != null) {
+        if (webhook.avatarUrl != null) {
             builder.append("\"avatar_url\": \"");
             builder.append(webhook.avatarUrl);
             builder.append("\", ");
