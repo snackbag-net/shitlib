@@ -71,7 +71,7 @@ public class Webhook {
         // Username
         if (webhook.username != null) {
             builder.append("\"username\": \"");
-            builder.append(webhook.content);
+            builder.append(webhook.username);
             builder.append("\", ");
         }
 
