@@ -3,10 +3,12 @@ package net.snackbag.shit.web;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
@@ -26,19 +28,19 @@ public class WebRequest {
         return url;
     }
 
-    public WebResponse get() {
+    public WebResponse get() throws IOException {
         return send("GET", null);
     }
 
-    public WebResponse get(String json) {
+    public WebResponse get(String json) throws IOException {
         return send("GET", json);
     }
 
-    public WebResponse post(String json) {
+    public WebResponse post(String json) throws IOException {
         return send("POST", json);
     }
 
-    public WebResponse send(String method, @Nullable String json) {
+    public WebResponse send(String method, @Nullable String json) throws IOException {
         WebResponse response = null;
         try {
             con = (HttpURLConnection) url.openConnection();
@@ -64,8 +66,8 @@ public class WebRequest {
             in.close();
 
             response = new WebResponse(status, content.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (ProtocolException e) {
+            throw new RuntimeException(e);
         } finally {
             if (con != null) {
                 con.disconnect();
