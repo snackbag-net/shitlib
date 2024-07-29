@@ -18,6 +18,10 @@ public class WebRequest {
         this.url = new URL(url);
     }
 
+    public WebRequest(URL url) {
+        this.url = url;
+    }
+
     public WebResponse get() {
         return send("GET", null);
     }
