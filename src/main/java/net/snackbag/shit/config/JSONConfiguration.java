@@ -34,7 +34,7 @@ public class JSONConfiguration implements Configuration {
             reload();
         } catch (IOException e) {
             e.printStackTrace();
-            throw new RuntimeException(" Failed to save JSONConfiguration '" + getFileName() + "'");
+            throw new RuntimeException("Failed to save JSONConfiguration '" + getFileName() + "'");
         }
     }
 
