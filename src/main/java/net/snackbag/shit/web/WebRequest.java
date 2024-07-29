@@ -22,6 +22,10 @@ public class WebRequest {
         this.url = url;
     }
 
+    public URL url() {
+        return url;
+    }
+
     public WebResponse get() {
         return send("GET", null);
     }
