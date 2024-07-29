@@ -4,6 +4,7 @@ import net.snackbag.shit.web.WebRequest;
 import net.snackbag.shit.web.WebResponse;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
 import java.net.URL;
 
 public class Webhook {
@@ -50,10 +51,9 @@ public class Webhook {
         this.tts = tts;
     }
 
-    public int send() {
+    public void send() throws IOException {
         WebRequest req = new WebRequest(url);
         WebResponse resp = req.post(jsonify(this));
-        return resp.code();
     }
 
     public URL getUrl() {
