@@ -6,7 +6,7 @@
 
     <groupId>net.snackbag.shit</groupId>
     <artifactId>shit</artifactId>
-    <version>1.2.2</version>
+    <version>1.2.3</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

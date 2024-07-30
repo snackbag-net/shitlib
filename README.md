@@ -7,7 +7,7 @@ Super Helpful and Innovative Toolkit or 'SHIT' is a Java API which aims to make 
     <dependency>
         <groupId>net.snackbag.shit</groupId>
         <artifactId>shit</artifactId>
-        <version>1.2.1</version>
+        <version>1.2.3</version>
     </dependency>
 </dependencies>
 ```
