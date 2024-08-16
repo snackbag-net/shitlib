@@ -131,6 +131,15 @@ public class JSONConfiguration implements Configuration {
         current.addProperty((String) values[1], value);
     }
 
+    @Override
+    public void put(String key, @Nullable Integer value) {
+        Object[] values = preparePut(key, value);
+        if (values == null) return;
+
+        JsonObject current = (JsonObject) values[0];
+        current.addProperty((String) values[1], value);
+    }
+
     public String getAsString(String key) {
         JsonElement element = json;
 
@@ -158,6 +167,22 @@ public class JSONConfiguration implements Configuration {
 
         return element != null && element.isJsonPrimitive() && element.getAsJsonPrimitive().isBoolean()
                 ? element.getAsBoolean()
+                : null;
+    }
+
+    @Override
+    public Integer getAsInteger(String key) {
+        JsonElement element = json;
+
+        for (String part : splitKey(key)) {
+            if (element == null || !element.getAsJsonObject().has(part)) {
+                return null;
+            }
+            element = element.getAsJsonObject().get(part);
+        }
+
+        return element != null && element.isJsonPrimitive() && element.getAsJsonPrimitive().isBoolean()
+                ? element.getAsInt()
                 : null;
     }
 
