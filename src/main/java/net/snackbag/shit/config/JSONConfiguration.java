@@ -211,10 +211,6 @@ public class JSONConfiguration implements Configuration {
         return keys("");
     }
 
-    public String[] splitKey(String key) {
-        return key.split("\\.");
-    }
-
     public String getAbsolutePath() {
         return path.toString();
     }
