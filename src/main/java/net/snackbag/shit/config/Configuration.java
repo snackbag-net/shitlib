@@ -19,6 +19,8 @@ public interface Configuration {
 
     void put(String key, @Nullable Boolean value);
 
+    void put(String key, @Nullable Integer value);
+
     default void putIfEmpty(String key, @NotNull String value) {
         Objects.requireNonNull(value);
 
@@ -43,9 +45,19 @@ public interface Configuration {
         }
     }
 
+    default void putIfEmpty(String key, @NotNull Integer value) {
+        Objects.requireNonNull(value);
+
+        if (!has(key)) {
+            put(key, value);
+        }
+    }
+
     String getAsString(String key);
 
     Boolean getAsBoolean(String key);
+
+    Integer getAsInteger(String key);
 
     default String getAsStringOrDefault(String key, String def) {
         if (!has(key)) {
@@ -61,6 +73,14 @@ public interface Configuration {
         }
 
         return getAsBoolean(key);
+    }
+
+    default Integer getAsIntegerOrDefault(String key, Integer def) {
+        if (!has(key)) {
+            return def;
+        }
+
+        return getAsInteger(key);
     }
 
     String[] keys(String key);
